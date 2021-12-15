@@ -88,3 +88,32 @@ folium.Choropleth(
 ).add_to(m)
 folium.LayerControl().add_to(m)
 m.save("index_YlOrRd_BuPu.html")
+
+
+m = folium.Map(location=[48, -102], zoom_start=3)
+
+folium.Choropleth(
+    geo_data=state_geo,
+    name="Infection rate",
+    data=total_data,
+    columns=["id", "infect_rate"],
+    key_on="feature.id",
+    fill_color="YlOrRd",
+    fill_opacity=0.7,
+    line_opacity=0.2,
+    legend_name="Infection rate",
+).add_to(m)
+
+folium.Choropleth(
+    geo_data=state_geo,
+    name="Vaccination rate",
+    data=total_data,
+    columns=["id", "vaccine_rate"],
+    key_on="feature.id",
+    fill_color="PuBuGn",
+    fill_opacity=0.7,
+    line_opacity=0.2,
+    legend_name="Vaccination rate",
+).add_to(m)
+folium.LayerControl().add_to(m)
+m.save("index_YlOrRd_PuBuGn.html")
