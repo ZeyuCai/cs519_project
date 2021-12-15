@@ -37,7 +37,7 @@ m = folium.Map(location=[48, -102], zoom_start=3)
 
 folium.Choropleth(
     geo_data=state_geo,
-    name="choropleth",
+    name="Infection rate",
     data=total_data,
     columns=["id", "infect_rate"],
     key_on="feature.id",
@@ -49,6 +49,7 @@ folium.Choropleth(
 
 folium.Choropleth(
     geo_data=state_geo,
+    name="Vaccination rate",
     data=total_data,
     columns=["id", "vaccine_rate"],
     key_on="feature.id",
