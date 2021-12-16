@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.animation as ani
+import matplotlib.dates as mdates
+from matplotlib.pyplot import cm
 import numpy as np
 import pandas as pd 
 import itertools
@@ -30,6 +32,25 @@ df_clean = pd.DataFrame(data = data,
     index = all_dates,
     columns = all_states)
 
-# df_clean = pd.read_csv("./out.csv", index_col=0)
+# Draw the graph
+region_of_interest = ["Washington", "Illinois", "California", "Arizona", "Alabama"]
+df = df_clean.loc[:, region_of_interest]
+n = len(region_of_interest)
+
 # create animation
-# animation in jupyter files
+# set the line color
+color = ['red', 'green', 'blue', 'orange','yellow']
+fig, ax = plt.subplots()
+ax.xaxis.set_major_locator(mdates.AutoDateLocator())
+plt.xticks(rotation=45, ha="right", rotation_mode="anchor") 
+plt.subplots_adjust(bottom = 0.2, top = 0.9) 
+plt.ylabel('No of Cases')
+plt.xlabel('Dates')
+
+def stepfunc(i=int):
+    plt.legend(df.columns)
+    p = plt.plot(df[:i].index, df[:i].values) #note it only returns the dataset, up to the point i
+    for i in range(0,n):
+        p[i].set_color(color[i]) #set the colour of each curve
+animator = ani.FuncAnimation(fig, stepfunc, interval = 200)
+plt.show()
