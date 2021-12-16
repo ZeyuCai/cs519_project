@@ -33,7 +33,7 @@ total_data['infect_rate'] = total_data['confirmed_cases']/total_data['population
 
 total_data['vaccine_rate'] = total_data['peopleVaccinated']/total_data['population']
 
-m = folium.Map(location=[48, -102], zoom_start=3)
+m = folium.Map(location=[48, -102], zoom_start=6)
 
 folium.Choropleth(
     geo_data=state_geo,
@@ -61,7 +61,7 @@ folium.Choropleth(
 folium.LayerControl().add_to(m)
 m.save("index_YlGn_BuPu.html")
 
-m = folium.Map(location=[48, -102], zoom_start=3)
+m = folium.Map(location=[48, -102], zoom_start=6)
 
 folium.Choropleth(
     geo_data=state_geo,
@@ -90,7 +90,7 @@ folium.LayerControl().add_to(m)
 m.save("index_YlOrRd_BuPu.html")
 
 
-m = folium.Map(location=[48, -102], zoom_start=3)
+m = folium.Map(location=[48, -102], zoom_start=6)
 
 folium.Choropleth(
     geo_data=state_geo,
